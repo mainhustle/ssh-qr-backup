@@ -1,0 +1,9 @@
+decode/qrcodes/*
+decode/restored_keys/*
+encode/keys/*
+encode/zipfiles/*
+encode/result/*
+encode/qrcodes/*
+*/.DS_Store
+.DS_Store
+decode/sshkeys/*
