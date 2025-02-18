@@ -14,7 +14,7 @@ rm -rf "$QR_DIR"
 mkdir -p "$QR_DIR"
 
 # Maximale Größe pro QR-Code in Bytes (z. B. 2953 Bytes für standardmäßige QR-Codes)
-MAX_SIZE=2953
+MAX_SIZE=2048
 
 # Alle privaten SSH-Keys im Verzeichnis finden und komprimieren
 for key in "$KEYS_DIR"/*; do
@@ -36,8 +36,11 @@ done
 # QR-Codes für alle komprimierten und aufgeteilten Dateien erzeugen
 for file in "$BACKUP_DIR"/*; do
     if [[ -f "$file" && -s "$file" ]]; then
-        base64 -i "$file" | qrencode -o "$QR_DIR/$(basename "$file").png"
+        FILENAME=$(basename "$file")
         echo "QR-Code erstellt: $QR_DIR/$(basename "$file").png"
+        base64 -i "$file" | qrencode -d 128 -o "$QR_DIR/$FILENAME.png"
+        magick -background white -fill black -gravity center -size 400x50 caption:"$FILENAME" "$QR_DIR/$FILENAME.png" -append "$QR_DIR/$FILENAME.png"
+        echo "QR-Code erstellt: $QR_DIR/$FILENAME.png mit Label $FILENAME"
     else
         echo "Überspringe leere Datei: $file"
     fi
