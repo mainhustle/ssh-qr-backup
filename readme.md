@@ -1,6 +1,6 @@
 # SSH Key Backup with QR Codes
 
-This script provides a secure way to back up SSH keys by compressing them, splitting large files, encoding them into QR codes, and restoring them when needed.
+This script provides a secure way to back up SSH keys by compressing them, splitting large files, encoding them into QR codes, and restoring them when needed.  It is primarily designed for macOS.
 
 ## Features
 - Compresses SSH private keys using Gzip
