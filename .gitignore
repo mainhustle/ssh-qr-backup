@@ -14,3 +14,4 @@ encode/result/*
 !encode/result/.gitkeep
 
 .DS_Store
+encode/printable_qrcodes.html

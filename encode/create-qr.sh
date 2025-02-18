@@ -39,8 +39,8 @@ for file in "$BACKUP_DIR"/*; do
         FILENAME=$(basename "$file")
         echo "QR-Code erstellt: $QR_DIR/$(basename "$file").png"
         base64 -i "$file" | qrencode -d 128 -o "$QR_DIR/$FILENAME.png"
-        magick -background white -fill black -gravity center -size 400x50 caption:"$FILENAME" "$QR_DIR/$FILENAME.png" -append "$QR_DIR/$FILENAME.png"
-        echo "QR-Code erstellt: $QR_DIR/$FILENAME.png mit Label $FILENAME"
+        # magick -background white -fill black -gravity center -size 400x50 caption:"$FILENAME.png" "$QR_DIR/$FILENAME.png" -append "$QR_DIR/$FILENAME.png"
+        # echo "QR-Code erstellt: $QR_DIR/$FILENAME.png mit Label $FILENAME"
     else
         echo "Überspringe leere Datei: $file"
     fi
